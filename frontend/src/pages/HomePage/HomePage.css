@@ -1,0 +1,12 @@
+#homepage-container {
+    min-height: calc(100vh - 56px);
+    position: relative;
+}
+
+.image-height {
+    height: 400px;
+}
+
+.width-fit {
+    width: fit-content;
+}
