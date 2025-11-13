@@ -26,7 +26,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        {/* Bootstrap JS for navbar toggle */}
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+          async
+        ></script>
+      </body>
     </html>
   );
 }
