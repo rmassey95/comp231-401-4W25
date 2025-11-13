@@ -7,9 +7,9 @@ function BootstrapNavbar() {
     return (
         <nav className="navbar navbar-expand-lg bg-dark">
             <div className="container-fluid">
-                <Link href="/" className="navbar-brand text-light">
+                <div className="navbar-brand text-light">
                     <Logo />
-                </Link>
+                </div>
                 <button 
                     className="navbar-toggler" 
                     type="button" 
@@ -24,7 +24,7 @@ function BootstrapNavbar() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0 d-flex justify-content-between w-100">
                         <li className="nav-item">
-                            <Link href="/" className="nav-link text-light" aria-current="page">
+                            <Link href="/organization/default-org" className="nav-link text-light" aria-current="page">
                                 Home
                             </Link>
                         </li>
