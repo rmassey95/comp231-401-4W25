@@ -4,7 +4,7 @@ COMP231 Software Development Project 1 Group 4 Project
 ## Project Structure
 
 - `/app` - Next.js 14 application (main application)
-- `/frontend` - Original Create React App (Ryan's initial work)
+- `/frontend` - Homepage and auth
 - `/prisma` - Database schema and migrations
 - `/components` - React components
 - `/actions` - Server actions for data mutations
