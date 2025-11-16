@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 function Register() {
     const router = useRouter();
+    const [message, setMessage] = useState("");
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -47,9 +48,24 @@ function Register() {
             return;
         }
 
-        // TODO: Implement actual registration logic
-        // For now, redirect to dashboard
-        router.push("/organization/default-org");
+        const name = formData.name;;
+        const email = formData.email;
+        const password = formData.password;
+
+        const response = await fetch('/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, email, password }),
+        });
+
+        const data = await response.json();
+        setMessage(data.message);
+
+        if (response.ok) {
+            router.push("/organization/default-org");
+        }
     };
 
     return (
@@ -60,7 +76,7 @@ function Register() {
                         <div className="card shadow">
                             <div className="card-body p-4">
                                 <h2 className="card-title text-center mb-4">Create Account</h2>
-                                
+
                                 <form onSubmit={handleSubmit}>
                                     <div className="mb-3">
                                         <label htmlFor="name" className="form-label">Full Name</label>
@@ -75,7 +91,7 @@ function Register() {
                                             required
                                         />
                                     </div>
-                                    
+
                                     <div className="mb-3">
                                         <label htmlFor="email" className="form-label">Email</label>
                                         <input
@@ -89,7 +105,7 @@ function Register() {
                                             required
                                         />
                                     </div>
-                                    
+
                                     <div className="mb-3">
                                         <label htmlFor="password" className="form-label">Password</label>
                                         <input
@@ -103,7 +119,7 @@ function Register() {
                                             required
                                         />
                                     </div>
-                                    
+
                                     <div className="mb-3">
                                         <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
                                         <input
@@ -117,18 +133,18 @@ function Register() {
                                             required
                                         />
                                     </div>
-                                    
+
                                     {error && (
                                         <div className="alert alert-danger" role="alert">
                                             {error}
                                         </div>
                                     )}
-                                    
+
                                     <button type="submit" className="btn btn-primary btn-lg w-100 mb-3">
                                         Sign Up
                                     </button>
                                 </form>
-                                
+
                                 <div className="text-center">
                                     <p className="mb-0">
                                         Already have an account?{" "}

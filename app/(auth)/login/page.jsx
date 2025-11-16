@@ -25,9 +25,17 @@ function Login() {
             return;
         }
 
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
         // TODO: Implement actual authentication logic
         // For now, redirect to dashboard
-        router.push("/organization/default-org");
+        // router.push("/organization/default-org");
     };
 
     return (
@@ -38,7 +46,7 @@ function Login() {
                         <div className="card shadow">
                             <div className="card-body p-4">
                                 <h2 className="card-title text-center mb-4">Sign In</h2>
-                                
+
                                 <form onSubmit={handleSubmit}>
                                     <div className="mb-3">
                                         <label htmlFor="email" className="form-label">Email</label>
@@ -52,7 +60,7 @@ function Login() {
                                             required
                                         />
                                     </div>
-                                    
+
                                     <div className="mb-3">
                                         <label htmlFor="password" className="form-label">Password</label>
                                         <input
@@ -65,18 +73,18 @@ function Login() {
                                             required
                                         />
                                     </div>
-                                    
+
                                     {error && (
                                         <div className="alert alert-danger" role="alert">
                                             {error}
                                         </div>
                                     )}
-                                    
+
                                     <button type="submit" className="btn btn-primary btn-lg w-100 mb-3">
                                         Sign In
                                     </button>
                                 </form>
-                                
+
                                 <div className="text-center">
                                     <p className="mb-0">
                                         Don't have an account?{" "}
