@@ -33,9 +33,13 @@ function Login() {
             body: JSON.stringify({ email, password }),
         });
 
-        // TODO: Implement actual authentication logic
-        // For now, redirect to dashboard
-        // router.push("/organization/default-org");
+        const data = await response.json();
+        if (!response.ok) {
+            setError(data.message || "Login failed");
+            return;
+        } else {
+            router.push("/organization/default-org");
+        }
     };
 
     return (
