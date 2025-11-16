@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import "./_components/Login.css";
+import { setCookie } from "cookies-next";
 
 function Login() {
     const router = useRouter();
@@ -39,6 +40,7 @@ function Login() {
             setError(data.message || "Login failed");
             return;
         } else {
+            setCookie("userId", data.user.id);
             router.push("/organization/default-org");
         }
     };

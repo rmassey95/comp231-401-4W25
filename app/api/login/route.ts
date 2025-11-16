@@ -21,7 +21,6 @@ export async function POST(request: Request) {
         if (!isPasswordValid) {
             return NextResponse.json({ message: 'Invalid email or password' }, { status: 401 });
         }
-
         return NextResponse.json({ message: 'Login successful', user: { id: user.id, email: user.email, name: user.name } }, { status: 200 });
     } catch (error) {
         console.error('Login error:', error);
